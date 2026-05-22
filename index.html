@@ -10,32 +10,17 @@
     .valhalla { 
       position:fixed; inset:0; 
       background: linear-gradient(rgba(10,10,30,0.9), rgba(30,15,5,0.9)), 
-                  url('https://picsum.photos/id/1015/1920/1080') center/cover; 
+                  url('https://grok.com/imagine/post/d061d6af-1a4a-4848-99e3-248ecd4a2ca1') center/cover; 
       display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; 
     }
-    h1 { 
-      font-family:'Creepster',cursive; 
-      font-size:3.8rem; 
-      margin:0; 
-      text-shadow: 0 0 60px #ffd700; 
+    .active { 
+      background: linear-gradient(rgba(10,10,30,0.85), rgba(30,15,5,0.85)), 
+                  url('https://grok.com/imagine/post/47e1c16b-dfb3-4131-8d8d-253f38c8fa43') center/cover; 
     }
-    .subtitle { 
-      font-size:1.6rem; 
-      margin:15px 0 40px; 
-      color:#ffd700; 
-      letter-spacing:6px; 
-    }
-    .status { 
-      font-size:1.8rem; 
-      margin:30px 0; 
-      color:#ffcc66; 
-    }
-    button { 
-      margin-top:30px; padding:25px 90px; font-size:2.3rem; 
-      background:linear-gradient(#8b0000, #5c0000); 
-      border:none; border-radius:25px; 
-      color:white; cursor:pointer; box-shadow:0 0 70px #ffd700; 
-    }
+    h1 { font-family:'Creepster',cursive; font-size:3.8rem; margin:0; text-shadow: 0 0 60px #ffd700; }
+    .subtitle { font-size:1.6rem; margin:15px 0 40px; color:#ffd700; letter-spacing:6px; }
+    .status { font-size:1.8rem; margin:30px 0; color:#ffcc66; }
+    button { margin-top:30px; padding:25px 90px; font-size:2.3rem; background:linear-gradient(#8b0000, #5c0000); border:none; border-radius:25px; color:white; cursor:pointer; box-shadow:0 0 70px #ffd700; }
     button:active { transform:scale(0.95); }
   </style>
 </head>
@@ -55,13 +40,16 @@
 function checkWindow() {
   const hour = new Date().getHours();
   const isActive = (hour >= 7 && hour < 9) || (hour >= 12 && hour < 14) || (hour >= 19 && hour < 21);
+  const screen = document.getElementById('screen');
   const btn = document.getElementById('strikeBtn');
   const status = document.getElementById('status');
 
   if (isActive) {
+    screen.classList.add('active');
     status.innerHTML = `RAID WINDOW OPEN — <span style="color:#ffaa00;">ONLY 10 MINUTES LEFT!</span>`;
     btn.style.display = 'block';
   } else {
+    screen.classList.remove('active');
     status.innerHTML = `VALHALLA SIMULATION — The worthy are waiting...`;
     btn.style.display = 'none';
   }
