@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Horn Viking • Valhalla Strike</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+    body { margin:0; padding:0; background:#0a0a0a; color:#fff; font-family:'Arial',sans-serif; overflow:hidden; height:100vh; }
+    .valhalla { 
+      position:fixed; inset:0; 
+      background: linear-gradient(rgba(10,10,30,0.9), rgba(30,15,5,0.9)), 
+                  url('https://picsum.photos/id/1015/1920/1080') center/cover; 
+      display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; 
+    }
+    h1 { 
+      font-family:'Creepster',cursive; 
+      font-size:3.8rem; 
+      margin:0; 
+      text-shadow: 0 0 60px #ffd700; 
+    }
+    .subtitle { 
+      font-size:1.6rem; 
+      margin:15px 0 40px; 
+      color:#ffd700; 
+      letter-spacing:6px; 
+    }
+    .status { 
+      font-size:1.8rem; 
+      margin:30px 0; 
+      color:#ffcc66; 
+    }
+    button { 
+      margin-top:30px; padding:25px 90px; font-size:2.3rem; 
+      background:linear-gradient(#8b0000, #5c0000); 
+      border:none; border-radius:25px; 
+      color:white; cursor:pointer; box-shadow:0 0 70px #ffd700; 
+    }
+    button:active { transform:scale(0.95); }
+  </style>
+</head>
+<body>
+
+<div id="screen" class="valhalla">
+  <h1>BIG HORN VIKING</h1>
+  <p class="subtitle">THE CALL OF VALHALLA</p>
+  <p class="status" id="status">VALHALLA SIMULATION — The worthy are waiting...</p>
+  
+  <button id="strikeBtn" onclick="strike()" style="display:none;">
+    ⚔️ ANSWER THE CALL OF VALHALLA ⚔️
+  </button>
+</div>
+
+<script>
+function checkWindow() {
+  const hour = new Date().getHours();
+  const isActive = (hour >= 7 && hour < 9) || (hour >= 12 && hour < 14) || (hour >= 19 && hour < 21);
+  const btn = document.getElementById('strikeBtn');
+  const status = document.getElementById('status');
+
+  if (isActive) {
+    status.innerHTML = `RAID WINDOW OPEN — <span style="color:#ffaa00;">ONLY 10 MINUTES LEFT!</span>`;
+    btn.style.display = 'block';
+  } else {
+    status.innerHTML = `VALHALLA SIMULATION — The worthy are waiting...`;
+    btn.style.display = 'none';
+  }
+}
+setInterval(checkWindow, 30000);
+checkWindow();
+
+function strike() {
+  alert("⚔️ THE CALL HAS BEEN ANSWERED!\n\nBig Horn Viking has answered the call of Valhalla!\n+10 Realm Power added to the Horde 🪓");
+}
+</script>
+</body>
+</html>
